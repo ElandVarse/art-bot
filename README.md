@@ -17,4 +17,4 @@ The bot retweets the last 10 tweets with the #art in language 'pt-br'
 **'CONSUMER_KEY= <br/>
 CONSUMER_SECRET= <br/>
 ACCESS_TOKEN= <br/>
-ACCESS_TOKEN_SECRET= <br/> ' **
+ACCESS_TOKEN_SECRET= <br/> '**
