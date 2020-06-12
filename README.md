@@ -2,7 +2,7 @@
 
 The bot retweets the last 10 tweets with the #art in language 'pt-br'
 
-##Installation 
+## Installation 
 
 - npm install
 
@@ -12,9 +12,9 @@ The bot retweets the last 10 tweets with the #art in language 'pt-br'
 - To make it work it's needed that you create a .env inside the doc
   with the keys you get in the APP Twitter, then a npm start.
   
-**.env Sintax**
+### .env Sintax**
 
-'CONSUMER_KEY= <br/>
+**'CONSUMER_KEY= <br/>
 CONSUMER_SECRET= <br/>
 ACCESS_TOKEN= <br/>
-ACCESS_TOKEN_SECRET= <br/> '
+ACCESS_TOKEN_SECRET= <br/> ' **
