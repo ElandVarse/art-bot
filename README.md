@@ -14,7 +14,7 @@ The bot retweets the last 10 tweets with the #art in language 'pt-br'
   
 **.env Sintax**
 
-'CONSUMER_KEY= 
-CONSUMER_SECRET= 
-ACCESS_TOKEN=
-ACCESS_TOKEN_SECRET='
+'CONSUMER_KEY= <br/>
+CONSUMER_SECRET= <br/>
+ACCESS_TOKEN= <br/>
+ACCESS_TOKEN_SECRET= <br/> '
