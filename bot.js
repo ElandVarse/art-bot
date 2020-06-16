@@ -1,6 +1,5 @@
 //Twitter library;
 const Twit = require('twit');
-
 //Dotenv pra esconder a chave;
 require('dotenv').config();
 
@@ -13,43 +12,38 @@ const Bot = new Twit({
     timeout_ms: 60 * 1000,
 });
 
-//Parâmetros do que estamos procurando.
-const artSearch = {
-    q: '#art',
-	result_type: "recent",
-	lang: "pt-br",
-    count: 10,
-}
-
 const botRetweet = () => {
-    //Método Get pra procurar pelos tweets com os parâmetros que definimos no artSearch;
-    Bot.get('search/tweets', artSearch, function(err, data) {
-        //Atribui os tweets que estamos procurando na variável tweets;
-        let tweets = data.statuses;
+    //Parâmetros do que estamos procurando.
+    const params = {
+        q: '#art',
+        result_type: "recent",
+        lang: "pt-br",
+    }
 
-		if(err){
-			console.log('Erro na busca', error)
-		}
-		else{
-            //Caso não tenha erros, vai pra um for que passa por todos os tweets;
-            for (let elements of tweets) {
-                //retweetId recebe cada elemento do for;
-                let retweetId = elements.id_str;
+    //Método Get pra procurar pelos tweets com os parâmetros que definimos no params;
+    Bot.get('search/tweets', params, function(err, data) {
+        //Caso erro
+        if(err){
+            console.log(`Erro na pesquisa aí meu patrão: ${err}`);
+        }
+        //Se funcionou, ele coloca o tweet na variável retweetId
+        else{
+            let retweetId = data.statuses[0].id_str;
 
-                //Método post pra retweetar
-                Bot.post('statuses/retweet/:id', {id: retweetId}, function(err, response) {
-                        if (response)
-                            console.log('Retweetado com sucesso! ' + retweetId)
-                        if (err)
-                            console.log('Opa, talvez você já tenha retweetado' + retweetId)
-					}
-				)
-			}
-		}
-	})
+            //Aqui é o método post pra retweetar a hashtag
+            Bot.post("statuses/retweet/" + retweetId, {}, (err, res) => {
+              if (res) {
+                console.log(`Oia só rapaz, parece que retweetou, olha lá. ${retweetId}`);
+              }
+              if (err) {
+                return
+                console.log(`Id do tweet:${retweetId} ${err}`);
+              }
+            });
+        }
+    });
 }
-
-//Retweeta a primeira vez
+      
 botRetweet();
-//Retweeta a cada intervalo desejado, no caso 1 hora;
-setInterval(botRetweet, 1000 * 60 * 60)
+//Retweeta a cada 10 seg
+setInterval(botRetweet, 10000);
