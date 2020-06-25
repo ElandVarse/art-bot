@@ -2,7 +2,9 @@
 
 The bot is set to search only in pt-br language. Every 10 sec, it'll retweet the last tweet that contains '#art' in it. I don't think this is the best way to run it, of course you can change the timing in the files.
 
-## Installation 
+## https://twitter.com/artistBot2006
+
+## Installation
 
 ```sh
   1 - npm install;
